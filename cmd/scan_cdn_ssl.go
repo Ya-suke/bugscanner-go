@@ -142,6 +142,8 @@ func scanCdnSsl(c *queuescanner.Ctx, p *queuescanner.QueueScannerScanParams) {
 	tlsConn := tls.Client(conn, &tls.Config{
 		ServerName:         req.Bug,
 		InsecureSkipVerify: true,
+		MinVersion:         tls.VersionTLS12,
+		MaxVersion:         tls.VersionTLS12,
 	})
 	ctxHandshake, ctxHandshakeCancel := context.WithTimeout(context.Background(), time.Duration(cdnSslFlagTimeout)*time.Second)
 	defer ctxHandshakeCancel()

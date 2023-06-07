@@ -68,6 +68,8 @@ func scanSNI(c *queuescanner.Ctx, p *queuescanner.QueueScannerScanParams) {
 	tlsConn := tls.Client(conn, &tls.Config{
 		ServerName:         domain,
 		InsecureSkipVerify: true,
+		MinVersion:         tls.VersionTLS12,
+		MaxVersion:         tls.VersionTLS12,
 	})
 	defer tlsConn.Close()
 

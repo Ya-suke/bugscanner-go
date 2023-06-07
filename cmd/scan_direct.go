@@ -59,6 +59,8 @@ var httpClient = &http.Client{
 	Transport: &http.Transport{
 		TLSClientConfig: &tls.Config{
 			InsecureSkipVerify: true,
+			MinVersion:         tls.VersionTLS12,
+			MaxVersion:         tls.VersionTLS12,
 		},
 	},
 	Timeout: 10 * time.Second,
